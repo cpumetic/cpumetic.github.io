@@ -7,311 +7,183 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-  background:#1a1a2e;
-  font-family:Verdana,Tahoma,Arial,sans-serif;
+  background:#c0c0c8;
+  font-family:Tahoma,Verdana,Arial,sans-serif;
   font-size:12px;
   color:#000;
+  padding:10px;
 }
-.marquee-bar{
-  background:#000;
-  color:#00ff00;
-  padding:3px 0;
-  font-size:11px;
-  font-family:Courier New,monospace;
-  overflow:hidden;
-  border-bottom:2px solid #00ff00;
+.container{
+  max-width:960px;
+  margin:0 auto;
 }
-.marquee-inner{
-  display:inline-block;
-  white-space:nowrap;
-  animation:mq 30s linear infinite;
-}
-@keyframes mq{from{transform:translateX(100vw)}to{transform:translateX(-100%)}}
-
-.site-header{
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='2' height='2' fill='%23000080'/%3E%3Crect x='2' y='2' width='2' height='2' fill='%23000066'/%3E%3C/svg%3E") repeat;
-  padding:16px 10px 10px;
-  border-bottom:3px solid #ffcc00;
+.header{
+  background:#000080;
+  color:#fff;
+  padding:8px 12px;
+  font-size:18px;
+  font-weight:bold;
   text-align:center;
-}
-.site-title{
-  font-size:26px;
-  font-weight:bold;
-  color:#ffff00;
-  text-shadow:2px 2px 0 #000;
-  font-family:Impact,Arial Black,sans-serif;
-  letter-spacing:2px;
-  text-transform:uppercase;
-}
-.site-subtitle{
-  color:#aaddff;
-  font-size:11px;
-  margin-top:4px;
-  letter-spacing:1px;
-}
-.nav-bar{
-  background:#000080;
-  border-top:2px solid #ffcc00;
-  border-bottom:2px solid #ffcc00;
-  padding:4px 10px;
-  display:flex;
-  gap:0;
-  flex-wrap:wrap;
-}
-.nav-bar a{
-  color:#fff;
-  text-decoration:none;
-  font-size:11px;
-  font-weight:bold;
-  padding:3px 12px;
-  border-right:1px solid #4466aa;
-  display:inline-block;
-}
-.nav-bar a:hover{background:#0000cc;color:#ffff00;}
-.nav-bar a:first-child{border-left:1px solid #4466aa;}
-
-.main{
-  max-width:980px;
-  margin:10px auto;
-  padding:0 6px;
-}
-
-.counter-bar{
-  background:#000;
-  border:2px solid #00aa00;
-  color:#00ff00;
-  font-family:Courier New,monospace;
-  font-size:11px;
-  padding:4px 10px;
-  margin-bottom:8px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:16px;
-  align-items:center;
-}
-.counter-bar span{color:#aaa;}
-.counter-bar b{color:#00ff00;}
-
-.section-title{
-  background:#000080;
-  color:#fff;
-  font-size:13px;
-  font-weight:bold;
-  padding:5px 10px;
-  border-left:5px solid #ffcc00;
-  border-top:1px solid #4466cc;
-  border-right:1px solid #4466cc;
-  border-bottom:1px solid #4466cc;
-  margin-bottom:0;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:6px;
-}
-.section-title small{font-size:10px;color:#aaddff;font-weight:normal;}
-
-.tier-legend{
-  background:#eeeeff;
   border:1px solid #9999cc;
-  border-top:none;
-  padding:5px 10px;
+  margin-bottom:6px;
+}
+.toolbar{
+  background:#d4d0c8;
+  border:1px solid #999;
+  padding:5px 8px;
+  margin-bottom:6px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.toolbar-btn{
+  background:#d4d0c8;
+  border-top:1px solid #fff;
+  border-left:1px solid #fff;
+  border-right:1px solid #404040;
+  border-bottom:1px solid #404040;
+  padding:2px 10px;
+  font-size:11px;
+  font-family:Tahoma,Arial,sans-serif;
+  cursor:pointer;
+}
+.toolbar-btn:active{
+  border-top:1px solid #404040;
+  border-left:1px solid #404040;
+  border-right:1px solid #fff;
+  border-bottom:1px solid #fff;
+}
+.toolbar-btn.active{
+  background:#000080;
+  color:#fff;
+  border-top:1px solid #404040;
+  border-left:1px solid #404040;
+  border-right:1px solid #fff;
+  border-bottom:1px solid #fff;
+}
+.toolbar-sep{width:1px;height:18px;background:#808080;border-right:1px solid #fff;}
+.toolbar-info{font-size:11px;color:#333;margin-left:auto;}
+
+.panel{
+  border:1px solid #999;
+  margin-bottom:8px;
+}
+.panel-title{
+  background:#000080;
+  color:#fff;
+  padding:4px 10px;
+  font-weight:bold;
+  font-size:12px;
+}
+.panel-body{
+  background:#d4d0c8;
+  padding:0;
+}
+
+.tier-bar{
+  background:#d4d0c8;
+  border-bottom:1px solid #999;
+  padding:4px 8px;
   font-size:10px;
   display:flex;
   flex-wrap:wrap;
-  gap:8px;
+  gap:10px;
   align-items:center;
-  margin-bottom:4px;
 }
-.tier-legend span{font-weight:bold;}
+.tier-bar b{color:#000080;}
 
-.table-wrap{
-  border:2px solid #9999cc;
-  overflow-x:auto;
-}
-table{
-  width:100%;
-  border-collapse:collapse;
-  background:#fff;
-}
-thead tr{
-  background:linear-gradient(#dde,#bbd);
-}
-th{
+table{width:100%;border-collapse:collapse;}
+thead th{
+  background:#e8e4dc;
+  border:1px solid #999;
   padding:6px 8px;
-  border:1px solid #9999cc;
   font-size:11px;
   font-weight:bold;
-  color:#000066;
-  white-space:nowrap;
-  text-align:left;
+  text-align:center;
 }
-th.c{text-align:center;}
-tbody tr{background:#fff;}
-tbody tr:nth-child(even){background:#f0f0ff;}
-tbody tr:hover{background:#ffffcc;cursor:pointer;}
+thead th.left{text-align:left;}
+tbody tr{background:#f4f0e8;}
+tbody tr:nth-child(even){background:#eae6de;}
+tbody tr:hover{background:#ffffc8;}
 td{
+  border:1px solid #bbb;
   padding:6px 8px;
-  border:1px solid #ccccdd;
   font-size:11px;
   vertical-align:middle;
 }
-.td-rank{
-  text-align:center;
-  font-weight:bold;
-  font-size:13px;
-  width:50px;
-}
-.r1{color:#cc8800;}
-.r2{color:#606060;}
-.r3{color:#884400;}
-.td-user a{
-  color:#0000cc;
-  font-weight:bold;
-  text-decoration:none;
-}
-.td-user a:hover{color:#cc0000;text-decoration:underline;}
-.cpu-name{font-weight:bold;font-size:11px;color:#000033;}
-.cpu-cores{font-size:10px;color:#666;}
-.td-score{text-align:center;}
-.score-num{
-  font-size:14px;
-  font-weight:bold;
-  font-family:Courier New,monospace;
-  color:#000080;
-}
-.score-pts{font-size:9px;color:#666;}
+.td-rank{text-align:center;font-weight:bold;}
+.td-user{text-align:center;}
+.td-user a{color:#000080;font-weight:bold;text-decoration:none;}
+.td-user a:hover{text-decoration:underline;color:#cc0000;}
+.td-cpu{text-align:center;font-size:11px;}
+.cpu-cores{font-size:10px;color:#555;}
+.td-score{text-align:center;font-weight:bold;}
+.score-num{color:#cc0000;font-size:13px;font-family:Courier New,monospace;}
 .tier-badge{
   display:inline-block;
   font-size:9px;
   font-weight:bold;
-  padding:1px 6px;
-  margin-top:2px;
-  border-radius:2px;
+  padding:1px 5px;
+  margin-top:1px;
 }
 .t-Elite    {background:#8B6914;color:#fff;}
 .t-High-End {background:#cc5500;color:#fff;}
 .t-Upper-Mid{background:#006600;color:#fff;}
-.t-Average  {background:#000099;color:#fff;}
+.t-Average  {background:#000080;color:#fff;}
 .t-Entry    {background:#555;color:#fff;}
-.t-Low      {background:#888;color:#fff;}
-.stars{color:#cc8800;font-size:11px;letter-spacing:0px;}
-.td-date{font-size:10px;color:#555;font-family:Courier New,monospace;white-space:nowrap;}
+.t-Low      {background:#999;color:#fff;}
+.td-date{text-align:center;font-size:10px;color:#333;font-family:Courier New,monospace;}
 
-.sort-btns{
-  display:flex;
-  gap:4px;
-  flex-wrap:wrap;
-  margin:6px 0;
-}
-.sort-btn{
-  background:#000080;
-  color:#fff;
-  border:none;
-  padding:3px 10px;
+.loading-msg{padding:20px;text-align:center;color:#000080;font-size:13px;}
+.err-msg{padding:16px;text-align:center;color:#cc0000;}
+
+.footer{
+  text-align:center;
   font-size:11px;
-  font-family:Verdana,Arial,sans-serif;
-  font-weight:bold;
-  cursor:pointer;
-  border:1px solid #4466cc;
+  color:#444;
+  margin-top:8px;
+  padding:4px;
 }
-.sort-btn:hover{background:#0000cc;color:#ffff00;}
-.sort-btn.active{background:#ffcc00;color:#000;}
-
-.loading-msg{
-  text-align:center;
-  padding:24px;
-  color:#000080;
-  font-size:13px;
-}
-.err-msg{
-  text-align:center;
-  padding:16px;
-  color:#cc0000;
-  font-size:12px;
-}
-
-.footer-table{
-  margin:12px auto 0;
-  max-width:980px;
-  padding:0 6px;
-}
-.footer-inner{
-  background:#000080;
-  border-top:2px solid #ffcc00;
-  color:#aaddff;
-  font-size:10px;
-  text-align:center;
-  padding:8px;
-  line-height:1.8;
-}
-.footer-inner a{color:#ffff00;text-decoration:none;}
-.footer-inner a:hover{text-decoration:underline;}
 
 @media(max-width:600px){
-  .site-title{font-size:18px;}
-  .td-date,.th-date{display:none;}
   th:nth-child(5),td:nth-child(5){display:none;}
   .cpu-cores{display:none;}
 }
 </style>
 </head>
 <body>
+<div class="container">
 
-<div class="marquee-bar">
-  <div class="marquee-inner">
-    &nbsp;&nbsp;&gt;&gt; LIVE BENCHMARK DATABASE &lt;&lt;&nbsp;&nbsp;|&nbsp;&nbsp;
-    Submit scores with CPUMetic app &nbsp;|&nbsp;
-    Scores: 0 – 10,000 pts &nbsp;|&nbsp;
-    Elite 9000+ &nbsp;| High-End 7000+ &nbsp;| Upper-Mid 5000+ &nbsp;| Average 3000+ &nbsp;| Entry 1000+ &nbsp;|&nbsp;
-    Rankings updated in real-time &nbsp;|&nbsp;
-    &copy; CPU Metic Benchmark Database 2026
-    &nbsp;&nbsp;&nbsp;
-  </div>
-</div>
+  <div class="header">CPU METIC BENCHMARK DATABASE</div>
 
-<div class="main">
-
-  <div class="counter-bar">
-    <button class="sort-btn" style="margin-left:auto;" onClick="loadData()">&#8635; Refresh</button>
+  <div class="toolbar">
+    <button class="toolbar-btn" onclick="loadData()">&#8635; Refresh</button>
+    <div class="toolbar-sep"></div>
+    <button class="toolbar-btn active" id="btnScore" onclick="sortBy('score')">Sort by Score</button>
+    <button class="toolbar-btn" id="btnDate" onclick="sortBy('date')">Sort by Date</button>
+    <span class="toolbar-info" id="toolbarInfo">Loading...</span>
   </div>
 
-  <div class="section-title">
-    <span>&#9776; GLOBAL RANKING &mdash; TOP SCORES</span>
-    <small id="statusTxt">Loading...</small>
-  </div>
-
-  <div class="tier-legend">
-    <b>Tier:</b>
-    <span style="color:#8B6914;">&#9632; Elite 9000+</span>
-    <span style="color:#cc5500;">&#9632; High-End 7000+</span>
-    <span style="color:#006600;">&#9632; Upper-Mid 5000+</span>
-    <span style="color:#000099;">&#9632; Average 3000+</span>
-    <span style="color:#555;">&#9632; Entry 1000+</span>
-    <span style="color:#888;">&#9632; Low &lt;1000</span>
-    <span style="margin-left:auto;">
-      <button class="sort-btn active" id="btnScore" onClick="sortBy('score')">Sort by Score</button>
-      <button class="sort-btn" id="btnDate" onClick="sortBy('date')">Sort by Date</button>
-    </span>
-  </div>
-
-  <div class="table-wrap">
-    <div id="list">
-      <div class="loading-msg">&#128190; Loading benchmark database...</div>
+  <div class="panel">
+    <div class="panel-title">GLOBAL RANKING</div>
+    <div class="panel-body">
+      <div class="tier-bar">
+        <b>Tier:</b>
+        <span>&#9632; <span style="color:#8B6914;font-weight:bold;">Elite</span> 9000+</span>
+        <span>&#9632; <span style="color:#cc5500;font-weight:bold;">High-End</span> 7000+</span>
+        <span>&#9632; <span style="color:#006600;font-weight:bold;">Upper-Mid</span> 5000+</span>
+        <span>&#9632; <span style="color:#000080;font-weight:bold;">Average</span> 3000+</span>
+        <span>&#9632; <span style="color:#555;font-weight:bold;">Entry</span> 1000+</span>
+        <span>&#9632; <span style="color:#999;font-weight:bold;">Low</span> &lt;1000</span>
+      </div>
+      <div id="list"><div class="loading-msg">Loading benchmark database...</div></div>
     </div>
   </div>
 
-</div>
+  <div class="footer">CPU Metic Benchmark Database &copy; 2026</div>
 
-<div class="footer-table">
-  <div class="footer-inner">
-    <b>CPU Metic Benchmark Database</b> &copy; 2026 &nbsp;|&nbsp;
-    Scores range: 0 &ndash; 10,000 pts &nbsp;|&nbsp;
-    Data stored on Firebase Realtime Database<br>
-    Best viewed at 1024x768 resolution &nbsp;&bull;&nbsp; All rights reserved
-  </div>
 </div>
-
 <script>
 var allData=[];
 var sortField='score';
@@ -339,49 +211,44 @@ function renderTable(arr){
     return;
   }
   var h='<table><thead><tr>'+
-    '<th class="c">Rank</th>'+
+    '<th style="width:60px;">Rank</th>'+
     '<th>User ID</th>'+
     '<th>Processor</th>'+
-    '<th class="c">Score</th>'+
-    '<th class="c th-date">Date</th>'+
+    '<th style="width:110px;">Score</th>'+
+    '<th style="width:150px;">Date</th>'+
     '</tr></thead><tbody>';
   arr.forEach(function(item,i){
     var tier=getTier(item.score);
     var stars=getStars(item.score);
-    var medal=i===0?'🥇 ':i===1?'🥈 ':i===2?'🥉 ':'';
-    var rc=i===0?'r1':i===1?'r2':i===2?'r3':'';
     h+='<tr>'+
-      '<td class="td-rank '+rc+'">'+medal+'#'+(i+1)+'</td>'+
+      '<td class="td-rank">#'+(i+1)+'</td>'+
       '<td class="td-user"><a href="view.html?id='+item.id+'">'+item.id+'</a></td>'+
-      '<td><div class="cpu-name">'+item.cpu+'</div><div class="cpu-cores">'+item.cores+'</div></td>'+
+      '<td class="td-cpu">'+item.cpu+'<br><span class="cpu-cores">'+item.cores+'</span></td>'+
       '<td class="td-score">'+
-        '<div class="score-num">'+item.score.toLocaleString()+'<span class="score-pts"> pts</span></div>'+
-        '<div><span class="tier-badge t-'+tier.replace('-','-')+'">'+tier+'</span></div>'+
-        '<div class="stars">'+stars+'</div>'+
+        '<div class="score-num">'+item.score.toLocaleString()+' pts</div>'+
+        '<div><span class="tier-badge t-'+tier+'">'+tier+'</span></div>'+
       '</td>'+
       '<td class="td-date">'+item.date+'</td>'+
       '</tr>';
   });
   h+='</tbody></table>';
   document.getElementById('list').innerHTML=h;
-  document.getElementById('cntEntries').textContent=arr.length;
-  document.getElementById('cntTime').textContent=new Date().toLocaleTimeString();
-  document.getElementById('statusTxt').textContent=arr.length+' records loaded';
+  document.getElementById('toolbarInfo').textContent=arr.length+' entries | updated '+new Date().toLocaleTimeString();
 }
 
 function sortBy(field){
   sortField=field;
-  document.getElementById('btnScore').className='sort-btn'+(field==='score'?' active':'');
-  document.getElementById('btnDate').className='sort-btn'+(field==='date'?' active':'');
+  document.getElementById('btnScore').className='toolbar-btn'+(field==='score'?' active':'');
+  document.getElementById('btnDate').className='toolbar-btn'+(field==='date'?' active':'');
   if(field==='score') allData.sort(function(a,b){return b.score-a.score;});
   else allData.sort(function(a,b){return b.date.localeCompare(a.date);});
   renderTable(allData);
 }
 
 function loadData(){
-  document.getElementById('list').innerHTML='<div class="loading-msg">&#128190; Loading benchmark database...</div>';
-  document.getElementById('statusTxt').textContent='Connecting...';
-  fetch("https://cpumetic-default-rtdb.asia-southeast1.firebasedatabase.app/.json")
+  document.getElementById('list').innerHTML='<div class="loading-msg">Loading benchmark database...</div>';
+  document.getElementById('toolbarInfo').textContent='Loading...';
+  fetch('https://cpumetic-default-rtdb.asia-southeast1.firebasedatabase.app/.json')
   .then(function(r){return r.json();})
   .then(function(data){
     allData=[];
@@ -396,8 +263,8 @@ function loadData(){
     sortBy(sortField);
   })
   .catch(function(err){
-    document.getElementById('list').innerHTML='<div class="err-msg">&#10060; Failed to load: '+err.message+'</div>';
-    document.getElementById('statusTxt').textContent='Error';
+    document.getElementById('list').innerHTML='<div class="err-msg">Failed to load: '+err.message+'</div>';
+    document.getElementById('toolbarInfo').textContent='Error';
   });
 }
 loadData();
