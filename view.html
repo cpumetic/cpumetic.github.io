@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CPU Metic Report</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:#1a1a2e;
+  font-family:Verdana,Tahoma,Arial,sans-serif;
+  font-size:12px;
+  color:#000;
+}
+.marquee-bar{
+  background:#000;
+  color:#00ff00;
+  padding:3px 0;
+  font-size:11px;
+  font-family:Courier New,monospace;
+  overflow:hidden;
+  border-bottom:2px solid #00ff00;
+}
+.marquee-inner{
+  display:inline-block;
+  white-space:nowrap;
+  animation:mq 30s linear infinite;
+}
+@keyframes mq{from{transform:translateX(100vw)}to{transform:translateX(-100%)}}
+
+.site-header{
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='2' height='2' fill='%23000080'/%3E%3Crect x='2' y='2' width='2' height='2' fill='%23000066'/%3E%3C/svg%3E") repeat;
+  padding:16px 10px 10px;
+  border-bottom:3px solid #ffcc00;
+  text-align:center;
+}
+.site-title{
+  font-size:26px;
+  font-weight:bold;
+  color:#ffff00;
+  text-shadow:2px 2px 0 #000;
+  font-family:Impact,Arial Black,sans-serif;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+.site-subtitle{
+  color:#aaddff;
+  font-size:11px;
+  margin-top:4px;
+  letter-spacing:1px;
+}
+.nav-bar{
+  background:#000080;
+  border-top:2px solid #ffcc00;
+  border-bottom:2px solid #ffcc00;
+  padding:4px 10px;
+  display:flex;
+  gap:0;
+  flex-wrap:wrap;
+}
+.nav-bar a{
+  color:#fff;
+  text-decoration:none;
+  font-size:11px;
+  font-weight:bold;
+  padding:3px 12px;
+  border-right:1px solid #4466aa;
+  display:inline-block;
+}
+.nav-bar a:hover{background:#0000cc;color:#ffff00;}
+.nav-bar a:first-child{border-left:1px solid #4466aa;}
+
+.main{
+  max-width:900px;
+  margin:10px auto;
+  padding:0 6px;
+}
+
+/* Score hero box */
+.scorebox{
+  background:#eeeeff;
+  border:2px solid #9999cc;
+  border-top:4px solid #000080;
+  padding:20px 16px;
+  text-align:center;
+  margin-bottom:10px;
+}
+.userid-label{
+  font-size:11px;
+  color:#555;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  margin-bottom:4px;
+}
+.userid-val{
+  font-size:18px;
+  font-weight:bold;
+  color:#000080;
+  margin-bottom:12px;
+}
+.score-big{
+  font-size:72px;
+  font-weight:bold;
+  color:#000080;
+  font-family:Impact,Arial Black,sans-serif;
+  line-height:1;
+}
+.score-pts{
+  font-size:18px;
+  color:#444;
+  font-weight:normal;
+  font-family:Verdana,sans-serif;
+}
+.score-max{
+  font-size:11px;
+  color:#888;
+  margin-top:2px;
+}
+.tier-badge{
+  display:inline-block;
+  font-size:13px;
+  font-weight:bold;
+  padding:4px 18px;
+  margin:8px auto 4px;
+  border-radius:2px;
+  letter-spacing:1px;
+}
+.stars-big{
+  font-size:22px;
+  color:#cc8800;
+  letter-spacing:3px;
+  margin-top:4px;
+}
+.score-bar-wrap{
+  max-width:400px;
+  margin:10px auto 0;
+  background:#ccc;
+  border:1px solid #999;
+  height:14px;
+  border-radius:0;
+}
+.score-bar-fill{
+  height:100%;
+  background:#000080;
+  transition:width .8s ease;
+}
+
+/* Panels */
+.section-title{
+  background:#000080;
+  color:#fff;
+  font-size:12px;
+  font-weight:bold;
+  padding:5px 10px;
+  border-left:5px solid #ffcc00;
+  border-top:1px solid #4466cc;
+  border-right:1px solid #4466cc;
+  border-bottom:1px solid #4466cc;
+}
+.panel{
+  border:2px solid #9999cc;
+  border-top:none;
+  margin-bottom:10px;
+  background:#fff;
+}
+table{width:100%;border-collapse:collapse;}
+td{
+  padding:7px 10px;
+  border:1px solid #ccccdd;
+  font-size:11px;
+  vertical-align:middle;
+}
+td.lbl{
+  width:38%;
+  background:#eeeeff;
+  font-weight:bold;
+  color:#000066;
+}
+td.val{color:#000;}
+
+.score-result-val{
+  font-size:15px;
+  font-weight:bold;
+  font-family:Courier New,monospace;
+  color:#000080;
+}
+
+.back-btn{
+  display:inline-block;
+  background:#000080;
+  color:#fff;
+  text-decoration:none;
+  font-size:11px;
+  font-weight:bold;
+  padding:4px 14px;
+  border:1px solid #4466cc;
+  margin-bottom:10px;
+}
+.back-btn:hover{background:#0000cc;color:#ffff00;}
+
+.footer-inner{
+  background:#000080;
+  border-top:2px solid #ffcc00;
+  color:#aaddff;
+  font-size:10px;
+  text-align:center;
+  padding:8px;
+  line-height:1.8;
+  margin-top:12px;
+}
+.footer-inner a{color:#ffff00;text-decoration:none;}
+.footer-inner a:hover{text-decoration:underline;}
+
+.loading-msg{
+  text-align:center;
+  padding:40px 16px;
+  color:#aaddff;
+  font-size:14px;
+}
+.err-msg{
+  text-align:center;
+  padding:30px 16px;
+  color:#ff6666;
+  font-size:14px;
+}
+
+/* Tier colors */
+.t-Elite    {background:#8B6914;color:#fff;}
+.t-High-End {background:#cc5500;color:#fff;}
+.t-Upper-Mid{background:#006600;color:#fff;}
+.t-Average  {background:#000099;color:#fff;}
+.t-Entry    {background:#555555;color:#fff;}
+.t-Low      {background:#888888;color:#fff;}
+
+/* Score bar tier colors */
+.bar-Elite    {background:#8B6914;}
+.bar-High-End {background:#cc5500;}
+.bar-Upper-Mid{background:#006600;}
+.bar-Average  {background:#000099;}
+.bar-Entry    {background:#555555;}
+.bar-Low      {background:#888888;}
+
+@media(max-width:600px){
+  .score-big{font-size:48px;}
+  .site-title{font-size:18px;}
+  td.lbl,td.val{display:block;width:100%;}
+  td.lbl{border-bottom:none;padding-bottom:2px;}
+}
+</style>
+</head>
+<body>
+
+<div class="marquee-bar">
+  <div class="marquee-inner">
+    &nbsp;&nbsp;&gt;&gt; CPU METIC BENCHMARK REPORT &lt;&lt;&nbsp;&nbsp;|&nbsp;&nbsp;
+    View detailed benchmark results &nbsp;|&nbsp;
+    Scores: 0 – 10,000 pts &nbsp;|&nbsp;
+    Elite 9000+ &nbsp;| High-End 7000+ &nbsp;| Upper-Mid 5000+ &nbsp;| Average 3000+ &nbsp;| Entry 1000+ &nbsp;|&nbsp;
+    &copy; CPU Metic Benchmark Database 2026
+    &nbsp;&nbsp;&nbsp;
+  </div>
+</div>
+
+<div class="main" id="content">
+  <div class="loading-msg">&#128190; Loading Benchmark Report...</div>
+</div>
+
+<div class="footer-inner">
+  <b>CPU Metic Benchmark Database</b> &copy; 2026 &nbsp;|&nbsp;
+  Scores range: 0 &ndash; 10,000 pts &nbsp;|&nbsp;
+  <a href="index.html">Back to Rankings</a> &nbsp;|&nbsp;
+  Best viewed at 1024x768 resolution
+</div>
+
+<script>
+function getTier(s){
+  if(s>=9000)return'Elite';
+  if(s>=7000)return'High-End';
+  if(s>=5000)return'Upper-Mid';
+  if(s>=3000)return'Average';
+  if(s>=1000)return'Entry';
+  return'Low';
+}
+function getStars(s){
+  if(s>=9000)return'★★★★★';
+  if(s>=7000)return'★★★★☆';
+  if(s>=5000)return'★★★☆☆';
+  if(s>=3000)return'★★☆☆☆';
+  if(s>=1000)return'★☆☆☆☆';
+  return'☆☆☆☆☆';
+}
+
+const id=new URLSearchParams(window.location.search).get('id');
+
+if(!id){
+  document.getElementById('content').innerHTML='<div class="err-msg">&#10060; No User ID Specified</div>';
+}else{
+  fetch('https://cpumetic-default-rtdb.asia-southeast1.firebasedatabase.app/'+id+'.json')
+  .then(function(r){return r.json();})
+  .then(function(pc){
+    if(!pc){
+      document.getElementById('content').innerHTML='<div class="err-msg">&#10060; Benchmark Report Not Found</div>';
+      return;
+    }
+
+    var rawScore=pc.result.score;
+    if(typeof rawScore==='string') rawScore=parseFloat(rawScore.replace(/[^0-9.]/g,''))||0;
+    var score=Math.round(rawScore);
+
+    var tier=getTier(score);
+    var stars=getStars(score);
+    var pct=Math.min(100,(score/10000)*100).toFixed(1);
+
+    document.title='CPU Metic Report - '+id;
+
+    document.getElementById('content').innerHTML=
+      '<a class="back-btn" href="index.html">&#8592; Back to Rankings</a>'+
+
+      '<div class="scorebox">'+
+        '<div class="userid-label">Benchmark Report for</div>'+
+        '<div class="userid-val">'+id+'</div>'+
+        '<div class="score-big">'+score.toLocaleString()+'<span class="score-pts"> pts</span></div>'+
+        '<div class="score-max">out of 10,000 pts</div>'+
+        '<div><span class="tier-badge t-'+tier+'">'+tier+'</span></div>'+
+        '<div class="stars-big">'+stars+'</div>'+
+        '<div class="score-bar-wrap"><div class="score-bar-fill bar-'+tier+'" style="width:'+pct+'%"></div></div>'+
+        '<div style="font-size:10px;color:#888;margin-top:3px;">'+pct+'% of maximum score</div>'+
+      '</div>'+
+
+      '<div class="section-title">CPU INFORMATION</div>'+
+      '<div class="panel"><table>'+
+        '<tr><td class="lbl">Processor</td><td class="val">'+pc.cpu.name+'</td></tr>'+
+        '<tr><td class="lbl">Clock Speed</td><td class="val">'+pc.cpu.speed+'</td></tr>'+
+        '<tr><td class="lbl">Core Count</td><td class="val">'+pc.cpu.cores+'</td></tr>'+
+      '</table></div>'+
+
+      '<div class="section-title">COMPRESSION TEST</div>'+
+      '<div class="panel"><table>'+
+        '<tr><td class="lbl">Compression Speed</td><td class="val">'+pc.compression.speed+'</td></tr>'+
+        '<tr><td class="lbl">Execution Time</td><td class="val">'+pc.compression.time+'</td></tr>'+
+      '</table></div>'+
+
+      '<div class="section-title">CRYPTOGRAPHIC TEST</div>'+
+      '<div class="panel"><table>'+
+        '<tr><td class="lbl">Encryption Speed</td><td class="val">'+pc.cryptographic.speed+'</td></tr>'+
+        '<tr><td class="lbl">Execution Time</td><td class="val">'+pc.cryptographic.time+'</td></tr>'+
+      '</table></div>'+
+
+      '<div class="section-title">BENCHMARK RESULT</div>'+
+      '<div class="panel"><table>'+
+        '<tr><td class="lbl">Performance Score</td><td class="val"><span class="score-result-val">'+score.toLocaleString()+' / 10,000 pts</span></td></tr>'+
+        '<tr><td class="lbl">Tier</td><td class="val"><span class="tier-badge t-'+tier+'" style="font-size:11px;padding:2px 10px;">'+tier+'</span></td></tr>'+
+        '<tr><td class="lbl">Star Rating</td><td class="val" style="color:#cc8800;font-size:14px;letter-spacing:2px;">'+stars+'</td></tr>'+
+        '<tr><td class="lbl">Report Date</td><td class="val" style="font-family:Courier New,monospace;">'+pc.report_date+'</td></tr>'+
+      '</table></div>';
+  })
+  .catch(function(err){
+    document.getElementById('content').innerHTML='<div class="err-msg">&#10060; Failed To Load Benchmark Report<br><small>'+err.message+'</small></div>';
+  });
+}
+</script>
+</body>
+</html>
